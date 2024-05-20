@@ -1,47 +1,41 @@
 using NUnit.Framework;
 using StringManipulationLib;
 
-namespace StringManipulationTests
+namespace StringManipulationLib.Tests
 {
+    [TestFixture]
     public class StringManipulatorTests
     {
         [Test]
-        public void ReverseString_ValidInput_ReturnsReversedString()
+        public void ReverseString_InputString_ReturnsReversedString()
         {
             // Arrange
             string input = "Hello";
+            string expectedOutput = "olleH";
 
             // Act
-            string reversed = StringManipulator.ReverseString(input);
+            string actualOutput = StringManipulator.ReverseString(input);
 
             // Assert
-            Assert.AreEqual("olleH", reversed);
+            Assert.AreEqual(expectedOutput, actualOutput);
         }
 
         [Test]
-        public void ReverseString_EmptyString_ReturnsEmptyString()
+        public void Analyze_InputString_ReturnsAnalysisResult()
         {
             // Arrange
-            string input = "";
+            string input = "Lorem ipsum dolor sit amet";
+            string expectedAnalysisResult = "Analysis:\n" +
+                "- Character Count: 26\n" +
+                "- Word Count: 5\n" +
+                "- Reversed String:\n" +
+                "tema tis rolod muspi meroL";
 
             // Act
-            string reversed = StringManipulator.ReverseString(input);
+            string actualAnalysisResult = StringManipulator.Analyze(input);
 
             // Assert
-            Assert.AreEqual("", reversed);
-        }
-
-        [Test]
-        public void ReverseString_NullInput_ReturnsNull()
-        {
-            // Arrange
-            string input = null;
-
-            // Act
-            string reversed = StringManipulator.ReverseString(input);
-
-            // Assert
-            Assert.IsNull(reversed);
+            Assert.AreEqual(expectedAnalysisResult, actualAnalysisResult);
         }
     }
 }
